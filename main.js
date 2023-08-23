@@ -316,7 +316,7 @@ function set_result(judge) {
     updateDb("results", JSON.stringify(results));
 }
 
-let judge_word_length = 3;
+let judge_word_length = 1;
 
 function check(btn) {
     answer.innerText = answer.innerText + btn.children[0].innerText;
