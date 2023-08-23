@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta content="width=device-width, initial-scale=1, minimum-scale=1.0, user-scalable=no" name="viewport" />
+    <title>源単 -Gentan-</title>
+    <meta name="description" content="◯壁と◯ステム英単語の単語を語源で学ぼう！目指せ日本縦断！" />
+    <meta name="theme-color" content="white" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@abshrimp_" />
+    <meta name="twitter:creator" content="@abshrimp_">
+    <meta name="twitter:title" content="源単 -Gentan-" />
+    <meta name="twitter:description" content="語「源」で学ぶ英「単」語。目指せ日本縦断！" />
+    <meta name="twitter:image" content="https://abshrimp.github.io/word/summary.png" />
+    <link rel="manifest" href="manifest.json" />
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet" />
+    <script src="stations.js" type="text/javascript"></script>
+    <script src="map.js" type="text/javascript"></script>
+    <script src="question.js" type="text/javascript"></script>
+    <script src="main.js" type="text/javascript"></script>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="android-chrome-192x192.png">
+</head>
+
+<body st="" class="body">
+    <div class="wrap">
+        <div>
+            <div class="head flex">
+                <a class="top-btn info-btn btn" onclick="info()"></a>
+                <div class="point flex" onclick="show_up_3()"></div>
+                <a class="top-btn setting-btn btn" onclick="setting()"></a>
+            </div>
+            <div class="ety flex" onclick="show_up_1()"></div>
+            <div class="history" id="history"></div>
+        </div>
+        <div class="question flex">
+            <div class="q_text" id="en"></div>
+            <div>
+                <div class="input-text"></div>
+                <div class="keys flex">
+                    <div class="w-input-btn flex">
+                        <div class="input-btn btn flex"></div>
+                    </div>
+                    <div class="w-input-btn flex">
+                        <div class="input-btn btn flex"></div>
+                    </div>
+                    <div class="w-input-btn flex">
+                        <div class="input-btn btn flex"></div>
+                    </div>
+                </div>
+                <div class="pass"><span onclick="pass()">わからない</span></div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="select-bar move1 flex">
+        <svg width="45" viewBox="0 0 400 100" xmlns="http://www.w3.org/2000/svg" version="1.1" onclick="go_out_1()"
+            style="height: 100%;">
+            <line x1="230" y1="0" x2="150" y2="50" stroke="white" stroke-width="14" stroke-linecap="round"></line>
+            <line x1="230" y1="100" x2="150" y2="50" stroke="white" stroke-width="14" stroke-linecap="round"></line>
+        </svg>
+        <div class="select-title">セクション</div>
+    </div>
+    <div class="select move1">
+        <table>
+            <tbody id="move1"></tbody>
+        </table>
+    </div>
+    <div class="select-bar move2 flex">
+        <svg width="45" viewBox="0 0 400 100" xmlns="http://www.w3.org/2000/svg" version="1.1"
+            onclick="go_out_2('.move1', '.move2')" style="height: 100%;">
+            <line x1="230" y1="0" x2="150" y2="50" stroke="white" stroke-width="14" stroke-linecap="round"></line>
+            <line x1="230" y1="100" x2="150" y2="50" stroke="white" stroke-width="14" stroke-linecap="round"></line>
+        </svg>
+        <div class="select-title">語源</div>
+    </div>
+    <div class="select move2">
+        <table>
+            <tbody id="move2"></tbody>
+        </table>
+    </div>
+    <div class="select-bar move3 flex">
+        <svg width="45" viewBox="0 0 400 100" xmlns="http://www.w3.org/2000/svg" version="1.1"
+            onclick="go_out_2('.move2', '.move3')" style="height: 100%;">
+            <line x1="230" y1="0" x2="150" y2="50" stroke="white" stroke-width="14" stroke-linecap="round"></line>
+            <line x1="230" y1="100" x2="150" y2="50" stroke="white" stroke-width="14" stroke-linecap="round"></line>
+        </svg>
+        <div class="select-title">単語</div>
+    </div>
+    <div class="select move3">
+        <table>
+            <tbody id="move3"></tbody>
+        </table>
+    </div>
+
+
+
+    <div class="select-bar move5 flex">
+        <svg width="45" viewBox="0 0 500 100" xmlns="http://www.w3.org/2000/svg" version="1.1" onclick="go_out_3()"
+            style="height: 100%;">
+            <line x1="190" y1="0" x2="260" y2="100" stroke="white" stroke-width="20" stroke-linecap="round"></line>
+            <line x1="330" y1="0" x2="260" y2="100" stroke="white" stroke-width="20" stroke-linecap="round"></line>
+        </svg>
+        <div class="select-title">JR最長片道切符の旅</div>
+    </div>
+    <div class="select move5" style="overflow: hidden;">
+        <div class="trip">
+            <div class="data flex">
+                <div style="height: 4vh;font-weight: bold;" class="flex" id="fromst"></div>
+                <div class="data2 flex">
+                    <div class="data3-1 flex" onclick="alert(alertstr[0])">
+                        <span id="st1"></span>
+                        <span style="font-size: 13px;" id="st1kana"></span>
+                        <svg width="26" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                            <circle fill="#fff" stroke="#000" stroke-width="15" cx="50" cy="50" r="42.5"></circle>
+                        </svg>
+                    </div>
+                    <div class="data3-2 flex">
+                        <div class="flex" id="wayname"></div>
+                        <div class="flex" id="between"></div>
+                        <svg width="20" viewBox="0 0 80 100" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                            <line x1="0" y1="0" x2="80" y2="50" stroke="black" stroke-width="14"></line>
+                            <line x1="0" y1="100" x2="80" y2="50" stroke="black" stroke-width="14"></line>
+                        </svg>
+                    </div>
+                    <div class="data3-1 flex" onclick="alert(alertstr[1])">
+                        <span id="st2"></span>
+                        <span style="font-size: 13px;" id="st2kana"></span>
+                        <svg width="26" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                            <circle fill="#fff" stroke="#000" stroke-width="15" cx="50" cy="50" r="42.5"></circle>
+                        </svg>
+                    </div>
+                </div>
+                <div style="width: 100%;height: 3vh;margin-top: 1.2vh;border-top: 1vh solid #000;"></div>
+            </div>
+            <div id="map" style="width: 100%; height: 70vh; background-color: #fff;"></div>
+        </div>
+    </div>
+    <div id="alert" class="alert">
+        <div onclick="document.getElementById('alert').style = 'visibility: visible;'"></div>
+        <div class="twitter">
+            <a href="https://twitter.com/intent/tweet?text=" target="_blank" rel="noopener noreferrer">
+                <img src="twitter.png" style="height: 3vh;">
+            </a>
+        </div>
+        <div class="share" onclick="shareClick(sharestr)">
+            <a>
+                <img src="share.png" style="height: 4vh;">
+            </a>
+        </div>
+    </div>
+
+    <div id="loading" class="popup loading">Now Loading...</div>
+
+    <div id="info" class="popup">
+        <div id="info-main" class="popup-main flex">
+            <h1>ようこそ</h1><br><h1>源単 -Gentan- へ</h1><br>
+            <p>語「源」で学ぶ英「単」語、『源単』————</p>
+            <p>まずはじめにホーム画面に追加することを強くおすすめします。次回より一瞬で単語の学習が開始できます。</p>
+            <p>画面の中央の太字部分の日本語訳を解答しましょう。使い方はそれだけです。</p>
+            <p>単語は語源順に並んでいます。画面上部黒いバーより好きな単語を学習することができます。</p>
+            <p>収録されているのは◯壁と◯ステム英単語から抜粋された1884語です。Sがついていない番号は◯壁、Sがついている番号は◯ステム英単語と対応しています。照らし合わせながら学習してください。</p>
+            <p>学習と同時に「JR最長片道切符の旅」が楽しめます。画面上部の数字は進んだ距離（km）です。タップして地図も確認できます。目指せ日本縦断！</p>
+            <div class="flex sharebox">
+                <div class="twitter">
+                    <a href="" target="_blank" rel="noopener noreferrer">
+                        <img src="twitter.png" style="height: 3vh;">
+                    </a>
+                </div>
+                <div class="share" onclick="shareClick()">
+                    <a>
+                        <img src="share.png" style="height: 4vh;">
+                    </a>
+                </div>
+            </div>
+            <p style="font-size: 13px;">version beta 1.0.0</p>
+            <a class="btn setting-select" onclick="close_info()">閉じる</a>
+        </div>
+    </div>
+
+    <div id="setting" class="popup">
+        <div id="setting-main" class="popup-main flex">
+            <div class="setting-row">
+                出題順<a id="sort" class="btn setting-select" onclick="sort()">番号順</a>
+            </div>
+            <div class="setting-row">
+                リピート範囲<a id="repeat" class="btn setting-select" onclick="change_repeat()">すべて</a>
+            </div>
+            <div class="setting-row">
+                2連続正解した問題はスキップ<a id="skip" class="btn setting-select" onclick="skip()">ON</a>
+            </div>
+            <div class="setting-row">
+                駅到着通知<a id="vis_alert" class="btn setting-select" onclick="vis_alert()">ON</a>
+            </div>
+            <div>
+                <p>昨日のプレイ時間　：　<span id="yesterday"></span></p>
+                <p>今日のプレイ時間　：　<sapn id="today"></span></p>
+            </div>
+            <a class="btn setting-select" onclick="close_setting()">閉じる</a>
+        </div>
+    </div>
+
+    <div id="judge" class="judge flex">
+        <svg id="judge_svg" y="-250" x="-250" viewBox="-250 -250 500 500" height="80" width="80"
+            style="overflow:visible" xmlns="http://www.w3.org/2000/svg" version="1.1"></svg>
+        <div class="ans2 flex" style="font-weight: bold;">
+            <div id="ans_en2"></div>
+            <div id="ans_jp2"></div>
+        </div>
+        <div class="ans flex">
+            <div id="ans_en"></div>
+            <div id="ans_jp"></div>
+        </div>
+        <div class="synonym flex"></div>
+    </div>
+</body>
+
+</html>
