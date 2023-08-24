@@ -206,6 +206,8 @@
                 <p>昨日のプレイ時間　：　<span id="yesterday"></span></p>
                 <p>今日のプレイ時間　：　<sapn id="today"></span></p>
             </div>
+            <a class="btn setting-select" onclick="savedata()">セーブデータ出力</a>
+            <input type="file" id="select-file" class="btn setting-select" onchange="loaddata()"/>
             <a class="btn setting-select" onclick="close_setting()">閉じる</a>
         </div>
     </div>
@@ -226,5 +228,28 @@
     </div>
     <div id="tutorial_cover" class="popup"></div>
 </body>
+
+<script>
+    function savedata() {
+        const blob = new Blob([JSON.stringify(results)],{type:"text/plain"});
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'gentan_data.txt';
+        link.click();
+    }
+    
+    function savedata() {
+        const selectFiles = document.querySelector("#select-file").files;
+        const file = selectFiles[0];
+        const reader = new FileReader();
+        reader.readAsText(file);
+        reader.onload = () => {
+          results = JSON.parse(reader.result);
+        }
+        reader.onerror = () => {
+          console.log("ファイル読み込みエラー")
+        }
+    }
+</script>
 
 </html>
