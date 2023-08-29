@@ -5373,7 +5373,10 @@ const relative = {
         [],
         []
     ],
-    "in turn": [],
+    "in turn": [
+        [],
+        []
+    ],
     "turn": [
         ["twist", "change", "roll", "shift"],
         ["break", "continue", "remain", "calm"]
