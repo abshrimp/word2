@@ -193,17 +193,20 @@ function change_question() {
     }
 }
 
+let historyList = [];
+
 function set_screen() {
     //問題表示 is_skip灰色
     get_result(word)
     document.getElementById("en").innerText = word;
-    let cor_num = 6;
+    let cor_num = 7;
     document.getElementById("en2").innerHTML = "";
+    historyList.unshift(word + "  :  " + jp[word][0])
     for (let i = cor_num; i > 0; i--) {
         let addhtml = "";
-        if (i - qList.length >= 0) addhtml = "<p></p>";
-        else if (is_skip(qList[i])) addhtml = '<p class="cross" style="text-decoration-color: rgba(0,0,0,' + (0.4 / cor_num * (cor_num - i + 1)) + ')">' + qList[i] + "</p>";
-        else addhtml = '<p>' + qList[i] + "</p>";
+        if (i - historyList.length >= 0) addhtml = "<p></p>";
+        else if (is_skip(historyList[i])) addhtml = '<p class="cross" style="text-decoration-color: rgba(0,0,0,' + (0.4 / cor_num * (cor_num - i + 1)) + ')">' + historyList[i] + "</p>";
+        else addhtml = '<p>' + historyList[i] + "</p>";
         document.getElementById("en2").innerHTML += addhtml;
     }
     document.getElementById("history").innerText = get_result(word);
