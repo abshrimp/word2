@@ -245,6 +245,16 @@
         reader.readAsText(file);
         reader.onload = () => {
           results = JSON.parse(reader.result);
+          let sum = 0;
+          for (let key in results) {
+            let c = results[key];
+            for (let i = 0; i < c.length; i++) {
+                if (c[i] == "○") sum += 5;
+                else sum += 1;
+            }
+          }
+          point = sum;
+          pointdiv.innerText = (point / 10).toFixed(1);
         }
         reader.onerror = () => {
           console.log("ファイル読み込みエラー")
