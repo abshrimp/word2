@@ -293,6 +293,7 @@ function set_qList(startword, loop = false, next = false) {
 
     updateDb("qList", JSON.stringify(qList));
     word = qList[0];
+    historyList = [];
     set_screen();
 }
 
